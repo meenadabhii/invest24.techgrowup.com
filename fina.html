@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Analysis - invest24.techgrowup.com</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+
+
+
+    <script>
+        (function () {
+            // Initialize googletag if not already defined
+            window.googletag = window.googletag || { cmd: [] };
+
+            // Ad slot variables
+            let adSlot1, adSlot2, anchorSlot;
+            const refreshInterval = 30000; // 30 seconds - more user-friendly refresh rate
+            let refreshTimer;
+
+            // Function to set up ads
+            function setupAds() {
+                googletag.cmd.push(function () {
+                    // Setup PubAds
+                    const pubads = googletag.pubads();
+                    pubads.enableSingleRequest();
+                    pubads.setCentering(true);
+
+                    // Apply geotargeting if available
+                    if (window.geoTarget) {
+                        pubads.setLocation(window.geoTarget);
+                    }
+
+                    // Define Ad Slots with consistent IDs
+                    adSlot1 = googletag.defineSlot(
+                        '/23313593623/Native',
+                        [[300, 250], [320, 480], [250, 250], [300, 100], 'fluid', [336, 280]],
+                        'ad-slot-1'
+                    ).addService(pubads);
+
+                    adSlot2 = googletag.defineSlot(
+                        '/23313593623/Native',
+                        [[300, 250], [320, 480], [250, 250], [300, 100], 'fluid', [336, 280]],
+                        'ad-slot-2'
+                    ).addService(pubads);
+
+                    // Define anchor ad with proper ID
+                    anchorSlot = googletag.defineOutOfPageSlot(
+                        '/23313593623/Native',
+                        googletag.enums.OutOfPageFormat.BOTTOM_ANCHOR
+                    );
+
+                    if (anchorSlot) {
+                        anchorSlot.addService(pubads);
+                        // Use the correct ID for the anchor ad
+                        anchorSlot.setElementId('ad-anchor-slot');
+                    }
+
+                    // Event listeners for ad loading
+                    pubads.addEventListener('slotRenderEnded', function (event) {
+                        // Handle ad render events if needed
+                        const slotId = event.slot.getSlotElementId();
+                        const isEmpty = event.isEmpty;
+
+                        // Example: hide containers with no ads
+                        if (isEmpty && document.getElementById(slotId)) {
+                            document.getElementById(slotId).style.display = 'none';
+                        }
+                    });
+
+                    // Enable services
+                    googletag.enableServices();
+
+                    // Display ads
+                    try {
+                        if (document.getElementById('ad-slot-1')) {
+                            googletag.display('ad-slot-1');
+                        }
+                        if (document.getElementById('ad-slot-2')) {
+                            googletag.display('ad-slot-2');
+                        }
+                        if (document.getElementById('ad-anchor-slot')) {
+                            googletag.display('ad-anchor-slot');
+                        }
+                    } catch (error) {
+                        console.log('Error displaying ads:', error);
+                    }
+
+                    // Set up periodic refresh with error handling
+                    setupAdRefresh();
+                });
+            }
+
+            // Function to handle ad refresh
+            function setupAdRefresh() {
+                if (refreshTimer) {
+                    clearInterval(refreshTimer);
+                }
+
+                refreshTimer = setInterval(function () {
+                    try {
+                        // Only refresh if slots exist and are defined
+                        const slotsToRefresh = [];
+                        if (adSlot1) slotsToRefresh.push(adSlot1);
+                        if (adSlot2) slotsToRefresh.push(adSlot2);
+
+                        if (slotsToRefresh.length > 0) {
+                            googletag.cmd.push(function () {
+                                googletag.pubads().refresh(slotsToRefresh);
+                            });
+                        }
+                    } catch (error) {
+                        console.log('Error refreshing ads:', error);
+                        clearInterval(refreshTimer); // Stop trying on persistent errors
+                    }
+                }, refreshInterval);
+            }
+
+            // Check for ad blockers (simple detection)
+            function checkAdBlocker() {
+                const testAd = document.createElement('div');
+                testAd.innerHTML = '&nbsp;';
+                testAd.className = 'adsbox';
+                document.body.appendChild(testAd);
+
+                setTimeout(function () {
+                    if (testAd.offsetHeight === 0) {
+                        console.log('Ad blocker detected');
+                        // You can show a message to users or implement fallback content
+                    }
+                    document.body.removeChild(testAd);
+                }, 100);
+            }
+
+            // Initialize ads when DOM is ready
+            if (document.readyState === 'complete' || document.readyState === 'interactive') {
+                setupAds();
+                checkAdBlocker();
+            } else {
+                document.addEventListener('DOMContentLoaded', function () {
+                    setupAds();
+                    checkAdBlocker();
+                });
+            }
+
+            // Clean up on page unload
+            window.addEventListener('beforeunload', function () {
+                if (refreshTimer) {
+                    clearInterval(refreshTimer);
+                }
+            });
+        })();
+
+    </script>
+
+
+    <style>
+        #banner-ad {
+            width: 100%;
+            max-width: 425px;
+            margin: 1rem auto 0.5rem;
+            padding: 0.5rem;
+            background: hsl(240, 6%, 97%);
+            box-shadow: 0 4px 15px var(--shadow-dark);
+            border-radius: 8px;
+            position: relative;
+            text-align: center;
+            border: 1px solid var(--accent-gold);
+        }
+
+        #banner-ad::before {
+            content: "Advertisement";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent-gold);
+            background: var(--primary-dark);
+            padding: 0 8px;
+            border-radius: 4px;
+            border: 1px solid var(--accent-gold);
+        }
+
+        .ad-divider {
+            width: 90%;
+            max-width: 425px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+            margin: 0.5rem auto;
+        }
+    </style>
+
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffeded 0%, #fff 50%, #ffeded 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .card {
+            box-shadow: 0 10px 30px rgba(229, 62, 62, 0.15);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff5e5e 0%, #e53e3e 100%);
+            box-shadow: 0 4px 15px rgba(229, 62, 62, 0.35);
+            border-radius: 50px;
+            padding: 16px 32px;
+            font-weight: 600;
+            color: white;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(229, 62, 62, 0.45);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+            box-shadow: 0 4px 15px rgba(45, 55, 72, 0.35);
+            border-radius: 50px;
+            padding: 16px 32px;
+            font-weight: 600;
+            color: white;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(45, 55, 72, 0.45);
+        }
+
+        .btn-tertiary {
+            background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);
+            box-shadow: 0 4px 15px rgba(56, 161, 105, 0.35);
+            border-radius: 50px;
+            padding: 16px 32px;
+            font-weight: 600;
+            color: white;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-tertiary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(56, 161, 105, 0.45);
+        }
+
+        .back-button {
+            background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+            color: white;
+            border-radius: 50px;
+            padding: 12px 24px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(45, 55, 72, 0.35);
+            cursor: pointer;
+            border: none;
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(45, 55, 72, 0.45);
+        }
+
+        .tab-button {
+            cursor: pointer;
+            border: none;
+            background: transparent;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(229, 62, 62, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .calculator-container {
+            background: #f9f9f9;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #4a5568;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        .input-group input:focus {
+            border-color: #e53e3e;
+            outline: none;
+        }
+
+        .result-box {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            display: none;
+        }
+
+        .result-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #e53e3e;
+            margin: 10px 0;
+        }
+
+        .financial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .financial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .countdown {
+            font-size: 18px;
+            font-weight: 600;
+            color: #e53e3e;
+            text-align: center;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center py-8 px-4">
+    <div class="container max-w-md mx-auto card bg-white">
+        <!-- Header -->
+        <header class="text-center py-8 px-6 bg-gradient-to-r from-red-50 to-red-100 relative">
+            <a href="index.html" class="back-button absolute left-4 top-4">
+                <i class="fas fa-arrow-left mr-2"></i> Back
+            </a>
+            <div class="floating-element">
+                <div class="feature-icon mx-auto">
+                    <i class="fas fa-chart-pie text-3xl text-red-500"></i>
+                </div>
+            </div>
+            <h1 class="text-4xl font-bold text-red-600 mt-4">Financial <span class="text-gray-800">Analysis</span>
+            </h1>
+            <p class="text-gray-600 mt-2">Advanced financial tools and insights</p>
+        </header>
+
+        <!-- ads  -->
+        <div id="banner-ad" class="ads-box" style="min-height: 250px;">
+            <div id="ad-slot-1" class="ad-container" style="display: block !important;"></div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="px-6 py-8">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800">Financial Analysis Tools</h2>
+                <p class="text-gray-600 mt-4">Use our advanced calculators to plan your financial future.</p>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col gap-4 mb-8">
+                <button id="retirementCalcBtn" class="btn-primary">
+                    <i class="fas fa-retirement mr-2"></i> Retirement Calculator
+                </button>
+                <button id="investmentCalcBtn" class="btn-secondary">
+                    <i class="fas fa-chart-line mr-2"></i> Investment Calculator
+                </button>
+                <button id="savingsCalcBtn" class="btn-tertiary">
+                    <i class="fas fa-piggy-bank mr-2"></i> Savings Calculator
+                </button>
+                <button onclick="window.location.href='insurance.html'" class="btn-primary">
+                    <i class="fas fa-shield-alt mr-2"></i> Go to Insurance
+                </button>
+            </div>
+
+            <!-- Retirement Calculator -->
+            <div id="retirementCalc" class="calculator-container" style="display: none;">
+                <h3 class="text-xl font-semibold text-red-600 mb-4">Retirement Calculator</h3>
+                <div class="input-group">
+                    <label for="currentAge">Current Age</label>
+                    <input type="number" id="currentAge" placeholder="e.g., 35">
+                </div>
+                <div class="input-group">
+                    <label for="retirementAge">Desired Retirement Age</label>
+                    <input type="number" id="retirementAge" placeholder="e.g., 65">
+                </div>
+                <div class="input-group">
+                    <label for="currentSavings">Current Retirement Savings ($)</label>
+                    <input type="number" id="currentSavings" placeholder="e.g., 50000">
+                </div>
+                <div class="input-group">
+                    <label for="monthlyContribution">Monthly Contribution ($)</label>
+                    <input type="number" id="monthlyContribution" placeholder="e.g., 500">
+                </div>
+                <div class="input-group">
+                    <label for="expectedReturn">Expected Annual Return (%)</label>
+                    <input type="number" id="expectedReturn" placeholder="e.g., 7" value="7">
+                </div>
+                <button class="btn-primary w-full" onclick="calculateRetirement()">
+                    Calculate Retirement Savings
+                </button>
+                <div id="retirementResult" class="result-box">
+                    <h4 class="font-semibold">Projected Retirement Savings</h4>
+                    <div id="retirementValue" class="result-value">$0</div>
+                    <p id="retirementText" class="text-gray-600"></p>
+                </div>
+            </div>
+
+            <!-- ads units  -->
+            <div id="banner-ad" class="ads-box" style="min-height: 250px;">
+                <div id="ad-slot-2" class="ad-container" style="display: block !important;"></div>
+            </div>
+
+
+            <!-- Investment Calculator -->
+            <div id="investmentCalc" class="calculator-container" style="display: none;">
+                <h3 class="text-xl font-semibold text-red-600 mb-4">Investment Calculator</h3>
+                <div class="input-group">
+                    <label for="initialInvestment">Initial Investment ($)</label>
+                    <input type="number" id="initialInvestment" placeholder="e.g., 10000">
+                </div>
+                <div class="input-group">
+                    <label for="investmentPeriod">Investment Period (Years)</label>
+                    <input type="number" id="investmentPeriod" placeholder="e.g., 10">
+                </div>
+                <div class="input-group">
+                    <label for="expectedReturnInvest">Expected Annual Return (%)</label>
+                    <input type="number" id="expectedReturnInvest" placeholder="e.g., 8" value="8">
+                </div>
+                <div class="input-group">
+                    <label for="monthlyInvest">Monthly Additional Investment ($)</label>
+                    <input type="number" id="monthlyInvest" placeholder="e.g., 200" value="0">
+                </div>
+                <button class="btn-primary w-full" onclick="calculateInvestment()">
+                    Calculate Investment Growth
+                </button>
+                <div id="investmentResult" class="result-box">
+                    <h4 class="font-semibold">Projected Investment Value</h4>
+                    <div id="investmentValue" class="result-value">$0</div>
+                    <p id="investmentText" class="text-gray-600"></p>
+                </div>
+            </div>
+
+            <!-- Savings Calculator -->
+            <div id="savingsCalc" class="calculator-container" style="display: none;">
+                <h3 class="text-xl font-semibold text-red-600 mb-4">Savings Calculator</h3>
+                <div class="input-group">
+                    <label for="savingsGoal">Savings Goal ($)</label>
+                    <input type="number" id="savingsGoal" placeholder="e.g., 50000">
+                </div>
+                <div class="input-group">
+                    <label for="currentAmount">Current Savings ($)</label>
+                    <input type="number" id="currentAmount" placeholder="e.g., 10000">
+                </div>
+                <div class="input-group">
+                    <label for="monthlySaving">Monthly Saving Amount ($)</label>
+                    <input type="number" id="monthlySaving" placeholder="e.g., 500">
+                </div>
+                <div class="input-group">
+                    <label for="savingsReturn">Expected Annual Return (%)</label>
+                    <input type="number" id="savingsReturn" placeholder="e.g., 3" value="3">
+                </div>
+                <button class="btn-primary w-full" onclick="calculateSavings()">
+                    Calculate Savings Timeline
+                </button>
+                <div id="savingsResult" class="result-box">
+                    <h4 class="font-semibold">Time to Reach Your Goal</h4>
+                    <div id="savingsTime" class="result-value">0 years</div>
+                    <p id="savingsText" class="text-gray-600"></p>
+                </div>
+            </div>
+
+            <!-- Financial Tips -->
+            <div class="bg-red-50 p-6 rounded-xl mt-8">
+                <h3 class="text-xl font-semibold text-red-600 mb-4">Financial Tips</h3>
+
+                <div class="financial-card">
+                    <h4 class="font-semibold text-red-600 mb-2"><i class="fas fa-lightbulb mr-2"></i> Start Early</h4>
+                    <p class="text-gray-600">The earlier you start investing, the more time your money has to grow
+                        through compound interest.</p>
+                </div>
+
+                <div class="financial-card">
+                    <h4 class="font-semibold text-red-600 mb-2"><i class="fas fa-diversity mr-2"></i> Diversify
+                        Investments</h4>
+                    <p class="text-gray-600">Spread your investments across different asset classes to reduce risk and
+                        maximize returns.</p>
+                </div>
+
+                <div class="financial-card">
+                    <h4 class="font-semibold text-red-600 mb-2"><i class="fas fa-piggy-bank mr-2"></i> Emergency Fund
+                    </h4>
+                    <p class="text-gray-600">Maintain an emergency fund with 3-6 months of living expenses for financial
+                        security.</p>
+                </div>
+            </div>
+
+            <!-- Countdown Redirect -->
+            <div class="countdown" id="countdown">
+                Redirecting to insurance.html in <span id="countdown-value">10</span> seconds
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="text-center py-6 px-6 bg-gray-50 text-gray-600 text-sm">
+            <p>© 2023 FinanceHub. All rights reserved.</p>
+            <p class="mt-2">Contact: info@financehub.com</p>
+        </footer>
+    </div>
+
+    <script>
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function () {
+            // Set up calculator toggle buttons
+            document.getElementById('retirementCalcBtn').addEventListener('click', function () {
+                hideAllCalculators();
+                document.getElementById('retirementCalc').style.display = 'block';
+            });
+
+            document.getElementById('investmentCalcBtn').addEventListener('click', function () {
+                hideAllCalculators();
+                document.getElementById('investmentCalc').style.display = 'block';
+            });
+
+            document.getElementById('savingsCalcBtn').addEventListener('click', function () {
+                hideAllCalculators();
+                document.getElementById('savingsCalc').style.display = 'block';
+            });
+
+            // Start the countdown for redirection
+            startCountdown(10);
+        });
+
+        function hideAllCalculators() {
+            document.getElementById('retirementCalc').style.display = 'none';
+            document.getElementById('investmentCalc').style.display = 'none';
+            document.getElementById('savingsCalc').style.display = 'none';
+        }
+
+        // Retirement calculation function
+        function calculateRetirement() {
+            const currentAge = parseInt(document.getElementById('currentAge').value);
+            const retirementAge = parseInt(document.getElementById('retirementAge').value);
+            const currentSavings = parseFloat(document.getElementById('currentSavings').value);
+            const monthlyContribution = parseFloat(document.getElementById('monthlyContribution').value);
+            const expectedReturn = parseFloat(document.getElementById('expectedReturn').value) / 100;
+
+            const yearsToRetirement = retirementAge - currentAge;
+            const monthsToRetirement = yearsToRetirement * 12;
+
+            // Calculate future value of current savings
+            const futureValueOfCurrent = currentSavings * Math.pow(1 + expectedReturn, yearsToRetirement);
+
+            // Calculate future value of monthly contributions
+            const monthlyRate = expectedReturn / 12;
+            const futureValueOfContributions = monthlyContribution *
+                ((Math.pow(1 + monthlyRate, monthsToRetirement) - 1) / monthlyRate) *
+                (1 + monthlyRate);
+
+            const totalRetirementSavings = futureValueOfCurrent + futureValueOfContributions;
+
+            // Display result
+            document.getElementById('retirementValue').textContent = formatCurrency(totalRetirementSavings);
+            document.getElementById('retirementText').textContent =
+                `Based on your inputs, you will have approximately ${formatCurrency(totalRetirementSavings)} 
+                saved by age ${retirementAge}.`;
+            document.getElementById('retirementResult').style.display = 'block';
+        }
+
+        // Investment calculation function
+        function calculateInvestment() {
+            const initialInvestment = parseFloat(document.getElementById('initialInvestment').value);
+            const investmentPeriod = parseInt(document.getElementById('investmentPeriod').value);
+            const expectedReturn = parseFloat(document.getElementById('expectedReturnInvest').value) / 100;
+            const monthlyInvest = parseFloat(document.getElementById('monthlyInvest').value);
+
+            // Calculate future value of initial investment
+            const futureValueOfInitial = initialInvestment * Math.pow(1 + expectedReturn, investmentPeriod);
+
+            // Calculate future value of monthly investments
+            const monthlyRate = expectedReturn / 12;
+            const months = investmentPeriod * 12;
+            const futureValueOfMonthly = monthlyInvest *
+                ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate);
+
+            const totalInvestmentValue = futureValueOfInitial + futureValueOfMonthly;
+
+            // Display result
+            document.getElementById('investmentValue').textContent = formatCurrency(totalInvestmentValue);
+            document.getElementById('investmentText').textContent =
+                `Your initial investment of ${formatCurrency(initialInvestment)} will grow to approximately 
+                ${formatCurrency(totalInvestmentValue)} in ${investmentPeriod} years.`;
+            document.getElementById('investmentResult').style.display = 'block';
+        }
+
+        // Savings calculation function
+        function calculateSavings() {
+            const savingsGoal = parseFloat(document.getElementById('savingsGoal').value);
+            const currentAmount = parseFloat(document.getElementById('currentAmount').value);
+            const monthlySaving = parseFloat(document.getElementById('monthlySaving').value);
+            const expectedReturn = parseFloat(document.getElementById('savingsReturn').value) / 100;
+
+            const monthlyRate = expectedReturn / 12;
+            let remaining = savingsGoal - currentAmount;
+            let months = 0;
+            let balance = currentAmount;
+
+            // Calculate how many months needed to reach goal
+            while (balance < savingsGoal && months < 1200) { // 100 years max
+                balance = balance * (1 + monthlyRate) + monthlySaving;
+                months++;
+            }
+
+            const years = Math.floor(months / 12);
+            const extraMonths = months % 12;
+
+            // Display result
+            document.getElementById('savingsTime').textContent = `${years} years and ${extraMonths} months`;
+            document.getElementById('savingsText').textContent =
+                `With your current savings and monthly contributions, you will reach your goal 
+                of ${formatCurrency(savingsGoal)} in approximately ${years} years and ${extraMonths} months.`;
+            document.getElementById('savingsResult').style.display = 'block';
+        }
+
+        // Format currency function
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).format(amount);
+        }
+
+        // Countdown and redirect function
+        function startCountdown(seconds) {
+            let countdown = seconds;
+            const countdownElement = document.getElementById('countdown-value');
+            countdownElement.textContent = countdown;
+
+            const countdownInterval = setInterval(function () {
+                countdown--;
+                countdownElement.textContent = countdown;
+
+                if (countdown <= 0) {
+                    clearInterval(countdownInterval);
+                    window.location.href = 'insurance.html';
+                }
+            }, 1000);
+
+            // Allow user to cancel the redirect
+            document.getElementById('countdown').addEventListener('click', function () {
+                clearInterval(countdownInterval);
+                this.style.display = 'none';
+            });
+        }
+    </script>
+
+
+    <!-- ads  -->
+    <div id="ad-anchor-slot"></div>
+
+    <script>
+        // Disable right-click
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+            alert('Right-click is disabled to protect our content.');
+        });
+
+        // Disable keyboard shortcuts
+        document.onkeydown = function (e) {
+            if (
+                (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'c' || e.key === 'i' || e.key === 'j')) ||
+                e.key === 'F12' ||
+                (e.metaKey && e.altKey && e.key === 'i')
+            ) {
+                e.preventDefault();
+                alert('Access to developer tools and source code is disabled to protect our content.');
+                return false;
+            }
+            return true;
+        };
+
+        // Disable text selection
+        document.addEventListener('selectstart', function (e) {
+            e.preventDefault();
+        });
+
+        // Disable drag and drop
+        document.addEventListener('dragstart', function (e) {
+            e.preventDefault();
+        });
+    </script>
+
+    <script>
+        window.googletag = window.googletag || { cmd: [] };
+        var anchorSlot;
+        googletag.cmd.push(function () {
+            anchorSlot = googletag.defineOutOfPageSlot('/23313593623/Anchor', googletag.enums.OutOfPageFormat.BOTTOM_ANCHOR);
+            if (anchorSlot) {
+                anchorSlot.addService(googletag.pubads());
+            }
+            googletag.pubads().enableSingleRequest();
+            googletag.enableServices();
+        });
+    </script>
+
+
+    <script>
+        (function () {
+            document.addEventListener("DOMContentLoaded", function () {
+                console.log("DOM fully loaded.");
+
+                function showRewardedAd() {
+                    if (!window.googletag || !googletag.cmd) {
+                        console.error("Google Ad Manager is not properly initialized.");
+                        return;
+                    }
+                    // reward ads
+                    googletag.cmd.push(function () {
+                        try {
+                            const rewardedSlot = googletag
+                                .defineOutOfPageSlot('/23313593623/Anchor', googletag.enums.OutOfPageFormat.REWARDED)
+                                .addService(googletag.pubads());
+
+                            googletag.enableServices();
+                            googletag.display(rewardedSlot);
+                            console.log("Attempting to display rewarded ad...");
+
+                            googletag.pubads().addEventListener("rewardedSlotReady", function (evt) {
+                                console.log("Rewarded ad ready.");
+                                evt.makeRewardedVisible();
+                            });
+
+                            googletag.pubads().addEventListener("rewardedSlotClosed", function () {
+                                console.log("Ad closed.");
+                                googletag.destroySlots([rewardedSlot]);
+                            });
+                        } catch (error) {
+                            console.error("Error during ad setup:", error);
+                        }
+                    });
+                }
+
+                // Add 2-second delay before showing the rewarded ad
+                setTimeout(function () {
+                    console.log("2 seconds elapsed, showing rewarded ad...");
+                    showRewardedAd();
+                }, 2000); // 2000 milliseconds = 2 seconds
+            });
+        })();
+    </script>
+
+
+
+</body>
+
+</html>
