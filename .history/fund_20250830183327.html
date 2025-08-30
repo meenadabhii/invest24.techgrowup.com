@@ -4,9 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Youth Financial Education - invest24.techgrowup.com</title>
+    <title>Adult Financial Center - invest24.techgrowup.com</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
@@ -230,11 +233,34 @@
             font-weight: 600;
             color: white;
             transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(229, 62, 62, 0.45);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+            box-shadow: 0 4px 15px rgba(45, 55, 72, 0.35);
+            border-radius: 50px;
+            padding: 16px 32px;
+            font-weight: 600;
+            color: white;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(45, 55, 72, 0.45);
         }
 
         .back-button {
@@ -298,9 +324,52 @@
             justify-content: center;
             margin-bottom: 20px;
         }
+
+        .quiz-option {
+            background: #f9f9f9;
+            border: 2px solid #eaeaea;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .quiz-option:hover {
+            background: #fff5f5;
+            border-color: #e53e3e;
+            transform: translateX(5px);
+        }
+
+        .quiz-option.selected {
+            background: #ffecec;
+            border-color: #e53e3e;
+            box-shadow: 0 5px 15px rgba(229, 62, 62, 0.2);
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(135deg, #ff5e5e 0%, #e53e3e 100%);
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        .quiz-container {
+            display: none;
+        }
+
+        .quiz-container.active {
+            display: block;
+        }
     </style>
-
-
 </head>
 
 <body class="min-h-screen flex items-center justify-center py-8 px-4">
@@ -312,14 +381,13 @@
             </a>
             <div class="floating-element">
                 <div class="feature-icon mx-auto">
-                    <i class="fas fa-graduation-cap text-3xl text-red-500"></i>
+                    <i class="fas fa-chart-line text-3xl text-red-500"></i>
                 </div>
             </div>
-            <h1 class="text-4xl font-bold text-red-600 mt-4">Youth <span class="text-gray-800">Financial
-                    Education</span></h1>
-            <p class="text-gray-600 mt-2">Building financial literacy for the next generation</p>
+            <h1 class="text-4xl font-bold text-red-600 mt-4">Adult <span class="text-gray-800">Financial Center</span>
+            </h1>
+            <p class="text-gray-600 mt-2">Advanced financial strategies for adults</p>
         </header>
-
 
 
         <!-- ads  -->
@@ -327,128 +395,215 @@
             <div id="ad-slot-1" class="ad-container" style="display: block !important;"></div>
 
         </div>
-        <!-- Navigation Button -->
-        <a href="finance.html" class="block">
-            <button class="btn-orange bg-teal-600 hover:bg-teal-700 text-white w-full py-3 rounded-lg font-bold mb-5"
-                style="background-color: rgb(201, 40, 35) !important;">
-                <i class="fas fa-arrow-right mr-2"></i> back to finance
-            </button>
-        </a>
         <!-- Main Content -->
         <main class="px-6 py-8">
-            <div class="text-center mb-8">
-                <h2 class="text-3xl font-bold text-gray-800">Financial Education for Young People</h2>
-                <p class="text-gray-600 mt-4">Learn the basics of money management and build a strong financial
-                    foundation for your future.</p>
+            <!-- Action Buttons -->
+            <div class="flex flex-col gap-4 mb-8">
+                <button id="startQuizBtn" class="btn-primary">
+                    <i class="fas fa-question-circle mr-2"></i> Take Financial Assessment
+                </button>
+                <button onclick="window.open('fina.html', '_blank')" class="btn-secondary">
+                    <i class="fas fa-file-alt mr-2"></i> View Financial Analysis
+                </button>
             </div>
 
-            <!-- Tabs -->
-            <div class="flex border-b border-gray-200 mb-6">
-                <button class="tab-button py-2 px-4 font-medium text-red-600 border-b-2 border-red-600"
-                    onclick="showTab('minortab1')">Saving</button>
-                <button class="tab-button py-2 px-4 font-medium text-gray-600"
-                    onclick="showTab('minortab2')">Budgeting</button>
-                <button class="tab-button py-2 px-4 font-medium text-gray-600"
-                    onclick="showTab('minortab3')">Earning</button>
+            <!-- Quiz Container -->
+            <div id="quizContainer" class="quiz-container">
+                <div class="text-center mb-6">
+                    <h2 class="text-2xl font-bold text-red-600">Financial Assessment</h2>
+                    <p class="text-gray-600 mt-2">Answer a few questions to help us understand your financial needs</p>
+
+                    <!-- Progress Bar -->
+                    <div class="progress-bar mt-4">
+                        <div id="quizProgress" class="progress" style="width: 0%"></div>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-2">Question <span id="currentQuestion">1</span> of 5</p>
+                </div>
+
+                <!-- Quiz Questions -->
+                <div id="question1" class="quiz-question">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">What is your primary financial goal right now?
+                    </h3>
+                    <div class="quiz-option" data-value="retirement">
+                        <p class="font-medium">Planning for retirement</p>
+                    </div>
+                    <div class="quiz-option" data-value="savings">
+                        <p class="font-medium">Building emergency savings</p>
+                    </div>
+                    <div class="quiz-option" data-value="investment">
+                        <p class="font-medium">Growing investments</p>
+                    </div>
+                    <div class="quiz-option" data-value="debt">
+                        <p class="font-medium">Paying off debt</p>
+                    </div>
+                </div>
+
+                <div id="question2" class="quiz-question" style="display: none;">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">How would you describe your risk tolerance?
+                    </h3>
+                    <div class="quiz-option" data-value="conservative">
+                        <p class="font-medium">Conservative - I prefer safe investments</p>
+                    </div>
+                    <div class="quiz-option" data-value="moderate">
+                        <p class="font-medium">Moderate - I'm willing to take some risks</p>
+                    </div>
+                    <div class="quiz-option" data-value="aggressive">
+                        <p class="font-medium">Aggressive - I'm comfortable with high risk for potential high returns
+                        </p>
+                    </div>
+                </div>
+
+                <div id="question3" class="quiz-question" style="display: none;">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">What is your time horizon for investing?</h3>
+                    <div class="quiz-option" data-value="short">
+                        <p class="font-medium">Short-term (less than 3 years)</p>
+                    </div>
+                    <div class="quiz-option" data-value="medium">
+                        <p class="font-medium">Medium-term (3-10 years)</p>
+                    </div>
+                    <div class="quiz-option" data-value="long">
+                        <p class="font-medium">Long-term (more than 10 years)</p>
+                    </div>
+                </div>
+
+                <div id="question4" class="quiz-question" style="display: none;">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">How much emergency savings do you currently
+                        have?</h3>
+                    <div class="quiz-option" data-value="none">
+                        <p class="font-medium">Less than 1 month of expenses</p>
+                    </div>
+                    <div class="quiz-option" data-value="some">
+                        <p class="font-medium">1-3 months of expenses</p>
+                    </div>
+                    <div class="quiz-option" data-value="adequate">
+                        <p class="font-medium">3-6 months of expenses</p>
+                    </div>
+                    <div class="quiz-option" data-value="extensive">
+                        <p class="font-medium">More than 6 months of expenses</p>
+                    </div>
+                </div>
+
+                <div id="question5" class="quiz-question" style="display: none;">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Which insurance coverage are you most
+                        interested in?</h3>
+                    <div class="quiz-option" data-value="life">
+                        <p class="font-medium">Life Insurance</p>
+                    </div>
+                    <div class="quiz-option" data-value="health">
+                        <p class="font-medium">Health Insurance</p>
+                    </div>
+                    <div class="quiz-option" data-value="property">
+                        <p class="font-medium">Property Insurance</p>
+                    </div>
+                    <div class="quiz-option" data-value="retirement">
+                        <p class="font-medium">Retirement Annuities</p>
+                    </div>
+                </div>
             </div>
 
-            <!-- ads units  -->
-            <div id="banner-ad" class="ads-box" style="min-height: 250px;">
-                <div id="ad-slot-2" class="ad-container" style="display: block !important;"></div>
-            </div>
 
-            <!-- Tab Content -->
-            <div id="minortab1" class="tab-content active">
-                <h3 class="text-xl font-semibold text-gray-800 mb-4">Saving Money</h3>
-                <p class="text-gray-600 mb-4">Learn how to save money effectively and develop healthy financial habits
-                    that will last a lifetime.</p>
 
-                <div class="mb-4 border border-gray-200 rounded-xl p-4">
-                    <h4 class="font-semibold text-red-600 mb-2">Why Save Money?</h4>
-                    <p class="text-gray-600">Saving money helps you prepare for emergencies, reach your goals, and build
-                        financial security for the future.</p>
+
+            <!-- Original Content (hidden during quiz) -->
+            <div id="mainContent">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-gray-800">Financial Solutions for Adults</h2>
+                    <p class="text-gray-600 mt-4">Explore our comprehensive financial services designed specifically for
+                        adults.</p>
+                </div>
+
+                <!-- Tabs -->
+                <div class="flex border-b border-gray-200 mb-6">
+                    <button class="tab-button py-2 px-4 font-medium text-red-600 border-b-2 border-red-600"
+                        onclick="showTab('tab1')">Investments</button>
+                    <button class="tab-button py-2 px-4 font-medium text-gray-600"
+                        onclick="showTab('tab2')">Retirement</button>
+                    <button class="tab-button py-2 px-4 font-medium text-gray-600"
+                        onclick="showTab('tab3')">Insurance</button>
+                </div>
+
+                <!-- Tab Content -->
+                <div id="tab1" class="tab-content active">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Investment Opportunities</h3>
+                    <p class="text-gray-600 mb-4">Grow your wealth with our expertly curated investment options tailored
+                        to
+                        your financial goals and risk tolerance.</p>
+
+                    <div class="mb-4 border border-gray-200 rounded-xl p-4">
+                        <h4 class="font-semibold text-red-600 mb-2">Stock Market Investments</h4>
+                        <p class="text-gray-600">Access a wide range of stocks from blue-chip companies to emerging
+                            market
+                            opportunities with our advanced trading platform.</p>
+                    </div>
+                </div>
+                
+                <!-- ads units  -->
+                <div id="banner-ad" class="ads-box" style="min-height: 250px;">
+                    <div id="ad-slot-2" class="ad-container" style="display: block !important;"></div>
                 </div>
 
                 <div class="mb-4 border border-gray-200 rounded-xl p-4">
-                    <h4 class="font-semibold text-red-600 mb-2">How to Start Saving</h4>
-                    <p class="text-gray-600">Start small by setting aside a portion of your allowance or earnings. Even
-                        saving just 10% can make a big difference over time.</p>
+                    <h4 class="font-semibold text-red-600 mb-2">Real Estate Investments</h4>
+                    <p class="text-gray-600">Diversify your portfolio with real estate investment trusts (REITs) and
+                        property investment opportunities with high yield potential.</p>
                 </div>
 
                 <div class="mb-4 border border-gray-200 rounded-xl p-4">
-                    <h4 class="font-semibold text-red-600 mb-2">Setting Savings Goals</h4>
-                    <p class="text-gray-600">Set specific, achievable goals for what you want to save for, like a new
-                        video game, smartphone, or college fund.</p>
-                </div>
-            </div>
-
-            <div id="minortab2" class="tab-content">
-                <h3 class="text-xl font-semibold text-gray-800 mb-4">Budgeting Basics</h3>
-                <p class="text-gray-600 mb-4">Learn how to create and stick to a budget to make the most of your money.
-                </p>
-
-                <div class="mb-4 border border-gray-200 rounded-xl p-4">
-                    <h4 class="font-semibold text-red-600 mb-2">What is a Budget?</h4>
-                    <p class="text-gray-600">A budget is a plan for how you will spend your money. It helps you
-                        prioritize your spending and avoid running out of money.</p>
+                    <h4 class="font-semibold text-red-600 mb-2">Mutual Funds & ETFs</h4>
+                    <p class="text-gray-600">Invest in professionally managed portfolios with instant
+                        diversification
+                        across various sectors and asset classes.</p>
                 </div>
 
-                <div class="mb-4 border border-gray-200 rounded-xl p-4">
-                    <h4 class="font-semibold text-red-600 mb-2">Creating Your First Budget</h4>
-                    <p class="text-gray-600">List your income (allowance, gifts, earnings) and expenses (snacks,
-                        entertainment, savings) to create a simple budget.</p>
-                </div>
-            </div>
-
-            <div id="minortab3" class="tab-content">
-                <h3 class="text-xl font-semibold text-gray-800 mb-4">Earning Money</h3>
-                <p class="text-gray-600 mb-4">Discover ways to earn money and start building your financial
-                    independence.</p>
-
-                <div class="mb-4 border border-gray-200 rounded-xl p-4">
-                    <h4 class="font-semibold text-red-600 mb-2">Part-Time Jobs</h4>
-                    <p class="text-gray-600">Explore age-appropriate part-time job opportunities like babysitting, dog
-                        walking, or tutoring.</p>
-                </div>
-
-                <div class="mb-4 border border-gray-200 rounded-xl p-4">
-                    <h4 class="font-semibold text-red-600 mb-2">Entrepreneurship</h4>
-                    <p class="text-gray-600">Start your own small business like a lemonade stand, handmade crafts, or
-                        tech support for neighbors.</p>
-                </div>
-            </div>
 
 
 
+                <div id="tab2" class="tab-content">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Retirement Planning</h3>
+                    <p class="text-gray-600 mb-4">Secure your future with our comprehensive retirement planning services
+                        designed to ensure financial stability in your golden years.</p>
 
-            <!-- Interactive Element -->
-            <div class="bg-red-50 p-6 rounded-xl mt-8">
-                <h3 class="text-xl font-semibold text-red-600 mb-4">Savings Calculator</h3>
-                <p class="text-gray-600 mb-4">See how your savings can grow over time with this interactive calculator.
-                </p>
+                    <div class="mb-4 border border-gray-200 rounded-xl p-4">
+                        <h4 class="font-semibold text-red-600 mb-2">401(k) & IRA Plans</h4>
+                        <p class="text-gray-600">Maximize your retirement savings with tax-advantaged accounts and
+                            employer
+                            matching programs.</p>
+                    </div>
 
-                <div class="mb-4">
-                    <label class="block text-gray-700 mb-2">Monthly Savings Amount ($)</label>
-                    <input type="number" id="savings-amount" class="w-full p-3 border border-gray-300 rounded-lg"
-                        value="20">
+                    <div class="mb-4 border border-gray-200 rounded-xl p-4">
+                        <h4 class="font-semibold text-red-600 mb-2">Annuities</h4>
+                        <p class="text-gray-600">Guarantee a steady stream of income during retirement with our
+                            carefully
+                            selected annuity products.</p>
+                    </div>
                 </div>
 
-                <div class="mb-4">
-                    <label class="block text-gray-700 mb-2">Interest Rate (%)</label>
-                    <input type="number" id="interest-rate" class="w-full p-3 border border-gray-300 rounded-lg"
-                        value="5">
+                <div id="tab3" class="tab-content">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Insurance Solutions</h3>
+                    <p class="text-gray-600 mb-4">Protect your assets and loved ones with our comprehensive insurance
+                        coverage options.</p>
+
+                    <div class="mb-4 border border-gray-200 rounded-xl p-4">
+                        <h4 class="font-semibold text-red-600 mb-2">Life Insurance</h4>
+                        <p class="text-gray-600">Ensure financial security for your family with our flexible life
+                            insurance
+                            policies tailored to your needs.</p>
+                    </div>
+
+                    <div class="mb-4 border border-gray-200 rounded-xl p-4">
+                        <h4 class="font-semibold text-red-600 mb-2">Health Insurance</h4>
+                        <p class="text-gray-600">Comprehensive health coverage options to protect you from unexpected
+                            medical expenses.</p>
+                    </div>
                 </div>
 
-                <div class="mb-4">
-                    <label class="block text-gray-700 mb-2">Time Period (Years)</label>
-                    <input type="number" id="time-period" class="w-full p-3 border border-gray-300 rounded-lg"
-                        value="5">
-                </div>
 
-                <button onclick="calculateSavings()" class="btn-primary w-full mb-4">Calculate</button>
-
-                <div id="savings-result" class="text-center font-semibold text-red-600 text-xl">
-                    Total Savings: $0
+                <!-- Call to Action -->
+                <div class="bg-red-50 p-6 rounded-xl text-center mt-8">
+                    <h3 class="text-xl font-semibold text-red-600 mb-4">Ready to Get Started?</h3>
+                    <p class="text-gray-600 mb-4">Schedule a free consultation with one of our financial advisors today.
+                    </p>
+                    <button class="btn-primary w-full">Schedule Consultation</button>
                 </div>
             </div>
         </main>
@@ -456,7 +611,7 @@
         <!-- Footer -->
         <footer class="text-center py-6 px-6 bg-gray-50 text-gray-600 text-sm">
             <p>© 2023 FinanceHub. All rights reserved.</p>
-            <p class="mt-2">Contact: info@financehub.com |</p>
+            <p class="mt-2">Contact: info@financehub.com</p>
         </footer>
     </div>
 
@@ -480,7 +635,7 @@
 
             // Activate the clicked tab
             const activeTabButton = Array.from(tabButtons).find(button =>
-                button.textContent.toLowerCase().includes(tabId.replace('minortab', '').toLowerCase())
+                button.textContent.toLowerCase().includes(tabId.replace('tab', '').toLowerCase())
             );
 
             if (activeTabButton) {
@@ -489,31 +644,60 @@
             }
         }
 
-        // Function to calculate savings
-        function calculateSavings() {
-            const amount = parseFloat(document.getElementById('savings-amount').value) || 0;
-            const rate = parseFloat(document.getElementById('interest-rate').value) || 0;
-            const years = parseFloat(document.getElementById('time-period').value) || 0;
-
-            // Calculate compound interest
-            const monthlyRate = rate / 100 / 12;
-            const months = years * 12;
-            let total = 0;
-
-            for (let i = 0; i < months; i++) {
-                total = (total + amount) * (1 + monthlyRate);
-            }
-
-            // Display result
-            document.getElementById('savings-result').textContent =
-                `Total Savings: $${total.toFixed(2)}`;
-        }
-
-        // Initialize page with first tab active
+        // Quiz functionality
         document.addEventListener('DOMContentLoaded', function () {
-            showTab('minortab1');
+            showTab('tab1');
+
+            let currentQuestion = 1;
+            const totalQuestions = 5;
+            const quizAnswers = [];
+
+            // Start quiz button
+            document.getElementById('startQuizBtn').addEventListener('click', function () {
+                document.getElementById('mainContent').style.display = 'none';
+                document.getElementById('quizContainer').classList.add('active');
+                document.getElementById('question1').style.display = 'block';
+                updateProgress();
+            });
+
+            // Quiz option selection
+            document.querySelectorAll('.quiz-option').forEach(option => {
+                option.addEventListener('click', function () {
+                    // Remove selected class from all options in current question
+                    const currentQuestionElement = document.getElementById(`question${currentQuestion}`);
+                    currentQuestionElement.querySelectorAll('.quiz-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+
+                    // Add selected class to clicked option
+                    this.classList.add('selected');
+
+                    // Store the answer
+                    quizAnswers[currentQuestion - 1] = this.getAttribute('data-value');
+
+                    // Move to next question after a brief delay
+                    setTimeout(() => {
+                        if (currentQuestion < totalQuestions) {
+                            document.getElementById(`question${currentQuestion}`).style.display = 'none';
+                            currentQuestion++;
+                            document.getElementById(`question${currentQuestion}`).style.display = 'block';
+                            document.getElementById('currentQuestion').textContent = currentQuestion;
+                            updateProgress();
+                        } else {
+                            // Quiz completed, redirect to insurance.html
+                            window.location.href = 'insurance.html';
+                        }
+                    }, 500);
+                });
+            });
+
+            function updateProgress() {
+                const progressPercentage = ((currentQuestion - 1) / totalQuestions) * 100;
+                document.getElementById('quizProgress').style.width = `${progressPercentage}%`;
+            }
         });
     </script>
+
 
 
     <!-- ads  -->
@@ -579,7 +763,7 @@
                     googletag.cmd.push(function () {
                         try {
                             const rewardedSlot = googletag
-                                .defineOutOfPageSlot('/23313593623/Inter', googletag.enums.OutOfPageFormat.REWARDED)
+                                .defineOutOfPageSlot('', googletag.enums.OutOfPageFormat.REWARDED)
                                 .addService(googletag.pubads());
 
                             googletag.enableServices();
@@ -609,7 +793,6 @@
             });
         })();
     </script>
-
 
 
 

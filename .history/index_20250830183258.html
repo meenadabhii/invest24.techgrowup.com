@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Youth Financial Education - invest24.techgrowup.com</title>
+    <title>invest24.techgrowup.com - Your Financial Journey</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -39,19 +39,19 @@
                     // Define Ad Slots with consistent IDs
                     adSlot1 = googletag.defineSlot(
                         '/23313593623/Native',
-                        [[300, 250], [320, 480], [250, 250], [300, 100], 'fluid', [336, 280]],
+                        [[300, 250], [320, 480], [250, 250], [300, 100], [336, 280]],
                         'ad-slot-1'
                     ).addService(pubads);
 
                     adSlot2 = googletag.defineSlot(
                         '/23313593623/Native',
-                        [[300, 250], [320, 480], [250, 250], [300, 100], 'fluid', [336, 280]],
+                        [[300, 250], [320, 480], [250, 250], [300, 100], [336, 280]],
                         'ad-slot-2'
                     ).addService(pubads);
 
                     // Define anchor ad with proper ID
                     anchorSlot = googletag.defineOutOfPageSlot(
-                        '/23313593623/Native',
+                        '/23313593623/Anchor',
                         googletag.enums.OutOfPageFormat.BOTTOM_ANCHOR
                     );
 
@@ -197,8 +197,6 @@
         }
     </style>
 
-
-
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
@@ -237,37 +235,29 @@
             box-shadow: 0 8px 20px rgba(229, 62, 62, 0.45);
         }
 
-        .back-button {
+        .btn-secondary {
             background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
-            color: white;
-            border-radius: 50px;
-            padding: 12px 24px;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
             box-shadow: 0 4px 15px rgba(45, 55, 72, 0.35);
-            cursor: pointer;
-            border: none;
+            border-radius: 50px;
+            padding: 16px 32px;
+            font-weight: 600;
+            color: white;
+            transition: all 0.3s ease;
         }
 
-        .back-button:hover {
+        .btn-secondary:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(45, 55, 72, 0.45);
         }
 
-        .tab-button {
-            cursor: pointer;
-            border: none;
-            background: transparent;
+        .expandable-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
         }
 
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
+        .expandable-content.expanded {
+            max-height: 1000px;
         }
 
         .floating-element {
@@ -288,6 +278,33 @@
             }
         }
 
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .finance-badge {
+            background: linear-gradient(135deg, #ff5e5e 0%, #e53e3e 100%);
+            color: white;
+            border-radius: 30px;
+            padding: 6px 16px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
         .feature-icon {
             width: 70px;
             height: 70px;
@@ -299,156 +316,134 @@
             margin-bottom: 20px;
         }
     </style>
-
-
 </head>
 
 <body class="min-h-screen flex items-center justify-center py-8 px-4">
     <div class="container max-w-md mx-auto card bg-white">
         <!-- Header -->
-        <header class="text-center py-8 px-6 bg-gradient-to-r from-red-50 to-red-100 relative">
-            <a href="index.html" class="back-button absolute left-4 top-4">
-                <i class="fas fa-arrow-left mr-2"></i> Back
-            </a>
+        <header class="text-center py-8 px-6 bg-gradient-to-r from-red-50 to-red-100">
             <div class="floating-element">
                 <div class="feature-icon mx-auto">
-                    <i class="fas fa-graduation-cap text-3xl text-red-500"></i>
+                    <i class="fas fa-piggy-bank text-3xl text-red-500"></i>
                 </div>
             </div>
-            <h1 class="text-4xl font-bold text-red-600 mt-4">Youth <span class="text-gray-800">Financial
-                    Education</span></h1>
-            <p class="text-gray-600 mt-2">Building financial literacy for the next generation</p>
+            <h1 class="text-4xl font-bold text-red-600 mt-4">invest24<br><span
+                    class="text-gray-800">techgrowup.com</span></h1>
+            <p class="text-gray-600 mt-2">Your journey to financial freedom starts here</p>
         </header>
-
-
-
+        
         <!-- ads  -->
         <div id="banner-ad" class="ads-box" style="min-height: 250px;">
             <div id="ad-slot-1" class="ad-container" style="display: block !important;"></div>
 
         </div>
-        <!-- Navigation Button -->
-        <a href="finance.html" class="block">
-            <button class="btn-orange bg-teal-600 hover:bg-teal-700 text-white w-full py-3 rounded-lg font-bold mb-5"
-                style="background-color: rgb(201, 40, 35) !important;">
-                <i class="fas fa-arrow-right mr-2"></i> back to finance
-            </button>
-        </a>
+
         <!-- Main Content -->
         <main class="px-6 py-8">
             <div class="text-center mb-8">
-                <h2 class="text-3xl font-bold text-gray-800">Financial Education for Young People</h2>
-                <p class="text-gray-600 mt-4">Learn the basics of money management and build a strong financial
-                    foundation for your future.</p>
+                <h2 class="text-3xl font-bold text-gray-800">Welcome to FinanceHub</h2>
+                <p class="text-gray-600 mt-4">We provide expert financial guidance tailored to your needs. Select your
+                    age group to continue.</p>
             </div>
 
-            <!-- Tabs -->
-            <div class="flex border-b border-gray-200 mb-6">
-                <button class="tab-button py-2 px-4 font-medium text-red-600 border-b-2 border-red-600"
-                    onclick="showTab('minortab1')">Saving</button>
-                <button class="tab-button py-2 px-4 font-medium text-gray-600"
-                    onclick="showTab('minortab2')">Budgeting</button>
-                <button class="tab-button py-2 px-4 font-medium text-gray-600"
-                    onclick="showTab('minortab3')">Earning</button>
+
+            <!-- Age Selection Buttons -->
+            <div class="flex flex-col space-y-6 mb-10">
+                <a href="fund.html" class="btn-primary pulse text-lg py-5 text-center">
+                    <i class="fas fa-user-check mr-2"></i> Age 18+
+                </a>
+                <a href="finance.html" class="btn-secondary text-lg py-5 text-center">
+                    <i class="fas fa-user-graduate mr-2"></i> Under 18
+                </a>
             </div>
+
+            <!-- Expandable Content Section -->
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">Why Choose FinanceHub?</h3>
+
+                <div class="mb-4 border border-gray-200 rounded-xl p-4">
+                    <button class="flex justify-between items-center w-full text-left font-medium text-red-600"
+                        onclick="toggleContent('content1')">
+                        <span>Expert Financial Guidance</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div id="content1" class="expandable-content mt-3 text-gray-600">
+                        <p>Our team of certified financial experts with over 15 years of experience will help you
+                            navigate the complex world of personal finance, investments, and wealth management.</p>
+                    </div>
+                </div>
+
+                <div class="mb-4 border border-gray-200 rounded-xl p-4">
+                    <button class="flex justify-between items-center w-full text-left font-medium text-red-600"
+                        onclick="toggleContent('content2')">
+                        <span>Tailored Investment Strategies</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div id="content2" class="expandable-content mt-3 text-gray-600">
+                        <p>We create personalized investment portfolios based on your financial goals, risk tolerance,
+                            and time horizon. Whether you're saving for retirement or a down payment, we have strategies
+                            for you.</p>
+                    </div>
+                </div>
+
+                <div class="mb-4 border border-gray-200 rounded-xl p-4">
+                    <button class="flex justify-between items-center w-full text-left font-medium text-red-600"
+                        onclick="toggleContent('content3')">
+                        <span>Comprehensive Financial Planning</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div id="content3" class="expandable-content mt-3 text-gray-600">
+                        <p>From budgeting and debt management to insurance and estate planning, we provide holistic
+                            financial solutions to secure your future and protect your assets.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics Section -->
+            <div class="grid grid-cols-2 gap-4 mb-8">
+                <div class="bg-red-50 p-4 rounded-xl text-center">
+                    <p class="text-3xl font-bold text-red-600">15+</p>
+                    <p class="text-sm text-gray-600">Years Experience</p>
+                </div>
+                <div class="bg-red-50 p-4 rounded-xl text-center">
+                    <p class="text-3xl font-bold text-red-600">10K+</p>
+                    <p class="text-sm text-gray-600">Clients Served</p>
+                </div>
+                <div class="bg-red-50 p-4 rounded-xl text-center">
+                    <p class="text-3xl font-bold text-red-600">$500M+</p>
+                    <p class="text-sm text-gray-600">Assets Managed</p>
+                </div>
+                <div class="bg-red-50 p-4 rounded-xl text-center">
+                    <p class="text-3xl font-bold text-red-600">98%</p>
+                    <p class="text-sm text-gray-600">Client Satisfaction</p>
+                </div>
+            </div>
+
 
             <!-- ads units  -->
+
             <div id="banner-ad" class="ads-box" style="min-height: 250px;">
                 <div id="ad-slot-2" class="ad-container" style="display: block !important;"></div>
             </div>
 
-            <!-- Tab Content -->
-            <div id="minortab1" class="tab-content active">
-                <h3 class="text-xl font-semibold text-gray-800 mb-4">Saving Money</h3>
-                <p class="text-gray-600 mb-4">Learn how to save money effectively and develop healthy financial habits
-                    that will last a lifetime.</p>
 
-                <div class="mb-4 border border-gray-200 rounded-xl p-4">
-                    <h4 class="font-semibold text-red-600 mb-2">Why Save Money?</h4>
-                    <p class="text-gray-600">Saving money helps you prepare for emergencies, reach your goals, and build
-                        financial security for the future.</p>
-                </div>
-
-                <div class="mb-4 border border-gray-200 rounded-xl p-4">
-                    <h4 class="font-semibold text-red-600 mb-2">How to Start Saving</h4>
-                    <p class="text-gray-600">Start small by setting aside a portion of your allowance or earnings. Even
-                        saving just 10% can make a big difference over time.</p>
-                </div>
-
-                <div class="mb-4 border border-gray-200 rounded-xl p-4">
-                    <h4 class="font-semibold text-red-600 mb-2">Setting Savings Goals</h4>
-                    <p class="text-gray-600">Set specific, achievable goals for what you want to save for, like a new
-                        video game, smartphone, or college fund.</p>
-                </div>
-            </div>
-
-            <div id="minortab2" class="tab-content">
-                <h3 class="text-xl font-semibold text-gray-800 mb-4">Budgeting Basics</h3>
-                <p class="text-gray-600 mb-4">Learn how to create and stick to a budget to make the most of your money.
-                </p>
-
-                <div class="mb-4 border border-gray-200 rounded-xl p-4">
-                    <h4 class="font-semibold text-red-600 mb-2">What is a Budget?</h4>
-                    <p class="text-gray-600">A budget is a plan for how you will spend your money. It helps you
-                        prioritize your spending and avoid running out of money.</p>
-                </div>
-
-                <div class="mb-4 border border-gray-200 rounded-xl p-4">
-                    <h4 class="font-semibold text-red-600 mb-2">Creating Your First Budget</h4>
-                    <p class="text-gray-600">List your income (allowance, gifts, earnings) and expenses (snacks,
-                        entertainment, savings) to create a simple budget.</p>
-                </div>
-            </div>
-
-            <div id="minortab3" class="tab-content">
-                <h3 class="text-xl font-semibold text-gray-800 mb-4">Earning Money</h3>
-                <p class="text-gray-600 mb-4">Discover ways to earn money and start building your financial
-                    independence.</p>
-
-                <div class="mb-4 border border-gray-200 rounded-xl p-4">
-                    <h4 class="font-semibold text-red-600 mb-2">Part-Time Jobs</h4>
-                    <p class="text-gray-600">Explore age-appropriate part-time job opportunities like babysitting, dog
-                        walking, or tutoring.</p>
-                </div>
-
-                <div class="mb-4 border border-gray-200 rounded-xl p-4">
-                    <h4 class="font-semibold text-red-600 mb-2">Entrepreneurship</h4>
-                    <p class="text-gray-600">Start your own small business like a lemonade stand, handmade crafts, or
-                        tech support for neighbors.</p>
-                </div>
-            </div>
-
-
-
-
-            <!-- Interactive Element -->
-            <div class="bg-red-50 p-6 rounded-xl mt-8">
-                <h3 class="text-xl font-semibold text-red-600 mb-4">Savings Calculator</h3>
-                <p class="text-gray-600 mb-4">See how your savings can grow over time with this interactive calculator.
-                </p>
-
-                <div class="mb-4">
-                    <label class="block text-gray-700 mb-2">Monthly Savings Amount ($)</label>
-                    <input type="number" id="savings-amount" class="w-full p-3 border border-gray-300 rounded-lg"
-                        value="20">
-                </div>
-
-                <div class="mb-4">
-                    <label class="block text-gray-700 mb-2">Interest Rate (%)</label>
-                    <input type="number" id="interest-rate" class="w-full p-3 border border-gray-300 rounded-lg"
-                        value="5">
-                </div>
-
-                <div class="mb-4">
-                    <label class="block text-gray-700 mb-2">Time Period (Years)</label>
-                    <input type="number" id="time-period" class="w-full p-3 border border-gray-300 rounded-lg"
-                        value="5">
-                </div>
-
-                <button onclick="calculateSavings()" class="btn-primary w-full mb-4">Calculate</button>
-
-                <div id="savings-result" class="text-center font-semibold text-red-600 text-xl">
-                    Total Savings: $0
+            <!-- Testimonials -->
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">What Our Clients Say</h3>
+                <div class="bg-gray-50 p-6 rounded-xl">
+                    <div class="flex items-start mb-4">
+                        <div class="mr-4">
+                            <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-user text-red-500"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Sarah Johnson</h4>
+                            <p class="text-sm text-red-500">Business Owner</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"FinanceHub transformed my approach to money management. Their strategies
+                        helped me grow my business revenue by 40% in just one year."</p>
                 </div>
             </div>
         </main>
@@ -456,64 +451,34 @@
         <!-- Footer -->
         <footer class="text-center py-6 px-6 bg-gray-50 text-gray-600 text-sm">
             <p>© 2023 FinanceHub. All rights reserved.</p>
-            <p class="mt-2">Contact: info@financehub.com |</p>
+            <p class="mt-2">Contact: info@financehub.com | (800) 123-4567</p>
         </footer>
     </div>
 
     <script>
-        // Function to show/hide tabs
-        function showTab(tabId) {
-            // Hide all tab content
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active');
-            });
+        // Function to toggle expandable content
+        function toggleContent(id) {
+            const content = document.getElementById(id);
+            content.classList.toggle('expanded');
 
-            // Show the selected tab
-            document.getElementById(tabId).classList.add('active');
-
-            // Update tab buttons
-            const tabButtons = document.querySelectorAll('.flex .tab-button');
-            tabButtons.forEach(button => {
-                button.classList.remove('text-red-600', 'border-b-2', 'border-red-600');
-                button.classList.add('text-gray-600');
-            });
-
-            // Activate the clicked tab
-            const activeTabButton = Array.from(tabButtons).find(button =>
-                button.textContent.toLowerCase().includes(tabId.replace('minortab', '').toLowerCase())
-            );
-
-            if (activeTabButton) {
-                activeTabButton.classList.add('text-red-600', 'border-b-2', 'border-red-600');
-                activeTabButton.classList.remove('text-gray-600');
+            // Update icon
+            const icon = content.previousElementSibling.querySelector('i');
+            if (content.classList.contains('expanded')) {
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            } else {
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
             }
         }
 
-        // Function to calculate savings
-        function calculateSavings() {
-            const amount = parseFloat(document.getElementById('savings-amount').value) || 0;
-            const rate = parseFloat(document.getElementById('interest-rate').value) || 0;
-            const years = parseFloat(document.getElementById('time-period').value) || 0;
-
-            // Calculate compound interest
-            const monthlyRate = rate / 100 / 12;
-            const months = years * 12;
-            let total = 0;
-
-            for (let i = 0; i < months; i++) {
-                total = (total + amount) * (1 + monthlyRate);
-            }
-
-            // Display result
-            document.getElementById('savings-result').textContent =
-                `Total Savings: $${total.toFixed(2)}`;
-        }
-
-        // Initialize page with first tab active
+        // Initialize page with some expanded content
         document.addEventListener('DOMContentLoaded', function () {
-            showTab('minortab1');
+            // Expand the first content by default
+            toggleContent('content1');
         });
     </script>
+
 
 
     <!-- ads  -->
@@ -579,7 +544,7 @@
                     googletag.cmd.push(function () {
                         try {
                             const rewardedSlot = googletag
-                                .defineOutOfPageSlot('/23313593623/Inter', googletag.enums.OutOfPageFormat.REWARDED)
+                                .defineOutOfPageSlot('', googletag.enums.OutOfPageFormat.REWARDED)
                                 .addService(googletag.pubads());
 
                             googletag.enableServices();
